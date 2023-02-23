@@ -97,6 +97,8 @@ def make_request_handler(input_dict):
 
 def run(server_class=HTTPServer, port=8333, log_file_path=LOG_FILE):
 
+    print(SUMMARY_DIR)
+    print(log_file_path)
     if not os.path.exists(SUMMARY_DIR):
         os.makedirs(SUMMARY_DIR)
 
@@ -117,6 +119,7 @@ def run(server_class=HTTPServer, port=8333, log_file_path=LOG_FILE):
 
 
 def main():
+    print(len(sys.argv))
     if len(sys.argv) == 3:
         abr_algo = sys.argv[1]
         trace_file = sys.argv[2]

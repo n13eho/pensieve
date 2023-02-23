@@ -36,7 +36,8 @@ sleep_time = sys.argv[6]
 sleep(int(sleep_time))
 	
 # generate url
-url = 'http://' + ip + '/' + 'myindex_' + abr_algo + '.html'
+# url = 'http://' + ip + '/' + 'myindex_' + abr_algo + '.html'
+url = 'http://{}/'.format(os.environ["MAHIMAHI_BASE"]) + 'myindex_' + abr_algo + '.html'
 
 # timeout signal
 signal.signal(signal.SIGALRM, timeout_handler)
@@ -63,7 +64,7 @@ try:
 	sleep(2)
 	
 	# to not display the page in browser
-	display = Display(visible=0, size=(800,600))
+	display = Display(visible=1, size=(800,600))
 	display.start()
 	
 	# initialize chrome driver
@@ -71,11 +72,13 @@ try:
 	chrome_driver = '../abr_browser_dir/chromedriver'
 	options.add_argument('--user-data-dir=' + chrome_user_dir)
 	options.add_argument('--ignore-certificate-errors')
+	options.add_argument('--autoplay-policy=no-user-gesture-required')
 	driver=webdriver.Chrome(chrome_driver, chrome_options=options)
 	
 	# run chrome
 	driver.set_page_load_timeout(10)
 	driver.get(url)
+	print(2)
 	
 	sleep(run_time)
 	

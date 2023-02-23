@@ -2,8 +2,8 @@ import os
 import numpy as np
 
 
-IN_FILE = './cooked/'
-OUT_FILE = './mahimahi/'
+IN_FILE = './sim_fcc/'
+OUT_FILE = './mahimahi_fcc/'
 FILE_SIZE = 2000
 BYTES_PER_PKT = 1500.0
 MILLISEC_IN_SEC = 1000.0
@@ -12,7 +12,11 @@ EXP_LEN = 5000.0  # millisecond
 
 def main():
 	files = os.listdir(IN_FILE)
+	file_num = len(files)
+	count = 1
 	for trace_file in files:
+		print(count, '/', file_num)
+		count += 1
 		if os.stat(IN_FILE + trace_file).st_size >= FILE_SIZE:
 			with open(IN_FILE + trace_file, 'rb') as f, open(OUT_FILE + trace_file, 'wb') as mf:
 				millisec_time = 0
