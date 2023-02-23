@@ -57,6 +57,8 @@ try:
 		command = 'exec /usr/bin/python ../rl_server/mpc_server.py ' + trace_file
 	elif abr_algo == 'robustMPC':
 		command = 'exec /usr/bin/python ../rl_server/robust_mpc_server.py ' + trace_file
+	elif abr_algo == 'LumosMPC':
+		command = 'exec /usr/bin/python ../rl_server/lumos_mpc_server.py ' + trace_file
 	else:
 		command = 'exec /usr/bin/python ../rl_server/simple_server.py ' + abr_algo + ' ' + trace_file
 	

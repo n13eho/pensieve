@@ -45,8 +45,12 @@ ABR_ALGO = 'robustMPC'
 PROCESS_ID = 6
 command_robustMPC = 'python run_traces.py ' + TRACE_PATH + ' ' + ABR_ALGO + ' ' + str(PROCESS_ID) + ' ' + ip
 
-ABR_ALGO = 'RL'
+ABR_ALGO = 'LumosMPC'
 PROCESS_ID = 7
+command_LumosMPC = 'python run_traces.py ' + TRACE_PATH + ' ' + ABR_ALGO + ' ' + str(PROCESS_ID) + ' ' + ip
+
+ABR_ALGO = 'RL'
+PROCESS_ID = 8
 command_RL = 'python run_traces.py ' + TRACE_PATH + ' ' + ABR_ALGO + ' ' + str(PROCESS_ID) + ' ' + ip
 
 proc_BB = subprocess.Popen(command_BB, stdout=subprocess.PIPE, shell=True)
@@ -63,6 +67,8 @@ proc_fastMPC = subprocess.Popen(command_fastMPC, stdout=subprocess.PIPE, shell=T
 time.sleep(0.1)
 proc_robustMPC = subprocess.Popen(command_robustMPC, stdout=subprocess.PIPE, shell=True)
 time.sleep(0.1)
+proc_LumosMPC = subprocess.Popen(command_LumosMPC, stdout=subprocess.PIPE, shell=True)
+time.sleep(0.1)
 proc_RL = subprocess.Popen(command_RL, stdout=subprocess.PIPE, shell=True)
 time.sleep(0.1)
 
@@ -73,4 +79,5 @@ proc_FESTIVE.wait()
 proc_BOLA.wait()
 proc_fastMPC.wait()
 proc_robustMPC.wait()
+proc_LumosMPC.wait()
 proc_RL.wait()
